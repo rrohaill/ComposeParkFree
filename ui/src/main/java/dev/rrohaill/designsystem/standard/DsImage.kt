@@ -21,15 +21,15 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
+import dev.rrohaill.designsystem.DsSpace
 import dev.rrohaill.designsystem.models.UiImage
 import dev.rrohaill.designsystem.models.UiImage.CoilImage.Companion.transformOf
 import dev.rrohaill.designsystem.text.UiText
 import dev.rrohaill.designsystem.text.uiText
-import dev.rrohaill.designsystem.DsSpace
 import dev.rrohaill.designsystem.ui.theme.DesignSystemTheme
 import dev.rrohaill.parkfree.R
 

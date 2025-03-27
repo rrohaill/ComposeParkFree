@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.net.PlacesClient
 import dev.rrohaill.designsystem.ui.theme.DesignSystemTheme
@@ -19,13 +18,16 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        Places.initialize(applicationContext, BuildConfig.PLACES_API_KEY)
+        Places.initialize(applicationContext, BuildConfig.MAPS_API_KEY)
         placesClient = Places.createClient(this)
 
         setContent {
             DesignSystemTheme {
                 DsScaffold(contentWindowInsets = fullScreenWindowInset()) {
-                    MapScreenWithPermissions(fusedLocationClient,placesClient)
+                    MapScreenWithPermissions(
+                        fusedLocationClient = fusedLocationClient,
+                        placesClient = placesClient
+                    )
                 }
             }
         }

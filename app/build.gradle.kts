@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -12,7 +13,7 @@ android {
 
     // Load local.properties
     val localProperties = Properties()
-    localProperties.load(project.rootProject.file("local.properties").inputStream())
+    localProperties.load(project.rootProject.file("secrets.properties").inputStream())
 
     defaultConfig {
         applicationId = "dev.rrohaill.parkfree"
@@ -27,7 +28,6 @@ android {
         manifestPlaceholders["MAPS_API_KEY"] = localProperties.getProperty("MAPS_API_KEY")
         // Add the buildConfigField here
         buildConfigField("String", "MAPS_API_KEY", localProperties.getProperty("MAPS_API_KEY") ?: "\"\"")
-        buildConfigField("String", "PLACES_API_KEY", localProperties.getProperty("PLACES_API_KEY") ?: "\"\"")
     }
 
     buildTypes {
@@ -52,6 +52,18 @@ android {
     }
 }
 
+secrets {
+    // To add your Maps API key to this project:
+    // 1. If the secrets.properties file does not exist, create it in the same folder as the local.properties file.
+    // 2. Add this line, where YOUR_API_KEY is your API key:
+    //        MAPS_API_KEY=YOUR_API_KEY
+    propertiesFileName = "secrets.properties"
+
+    // A properties file containing default secret values. This file can be
+    // checked in version control.
+    defaultPropertiesFileName = "local.defaults.properties"
+}
+
 dependencies {
     implementation(project(":ui"))
 
@@ -70,7 +82,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.places)
     implementation(libs.android.maps.utils)
-    implementation(libs.coil.compose)
+    implementation(libs.bundles.coil)
+    implementation(libs.lottie.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

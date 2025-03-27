@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
-import coil.compose.AsyncImagePainter
-import coil.compose.AsyncImagePainter.Companion.DefaultTransform
-import coil.request.NullRequestDataException
+import coil3.compose.AsyncImagePainter
+import coil3.compose.AsyncImagePainter.Companion.DefaultTransform
+import coil3.request.NullRequestDataException
 import com.airbnb.lottie.LottieComposition
 import com.airbnb.lottie.compose.LottieClipSpec
 import dev.rrohaill.designsystem.DsTestTags
